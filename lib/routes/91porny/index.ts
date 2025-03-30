@@ -92,11 +92,23 @@ async function handler(ctx) {
                         <p>发布日期: ${publishDate}</p>
                         <p>作者: <a href="${authorUrl}">${authorName}</a></p>
                         <p>预览图:</p>
-                        <img src="${thumb_img}" referrerpolicy="no-referrer" alt="预览图" />
-                        <video controls width="100%" poster="${thumb_img}">
-                            <source src="${video_src}" type="application/x-mpegURL">
-                            您的浏览器不支持 HTML5 视频
-                        </video>
+                        <img 
+                            src="${thumb_img}" 
+                            style="max-width: 100%; height: auto; display: block;" 
+                            alt="预览图" 
+                            referrerpolicy="no-referrer"
+                        /></p>
+                        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                            <video 
+                                controls 
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                                poster="${thumb_img}"
+                                preload="metadata"
+                            >
+                                <source src="${video_src}" type="application/x-mpegURL">
+                                您的浏览器不支持 HTML5 视频
+                            </video>
+                        </div>
                     `,
                     };
                 } catch (error) {
